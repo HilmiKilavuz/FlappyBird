@@ -12,6 +12,7 @@ namespace FlappyBird
 {
     public partial class Form1 : Form
     {
+        //kuşun aşağı düşme hızını ve boruların haraket hızını başta değişken olarak atadım.Başlangıç skorunu da tanımladım.
         int pipeSpeed = 8;
         int gravity = 5;
         int score = 0;
@@ -26,9 +27,10 @@ namespace FlappyBird
      
 
       
-  //burda değşken olarak atadığımız hız değerlerini boru ve kuşlara verdik.
+
         private void gameTimerEvet(object sender, EventArgs e)
         {
+            //burda değşken olarak atadığımız hız değerlerini boru ve kuşlara verdik.
             flappyBird.Top += gravity;
             pipeTop1.Left -= pipeSpeed;
             pipeTop2.Left -= pipeSpeed;
@@ -38,7 +40,8 @@ namespace FlappyBird
             pipeBottom3.Left -= pipeSpeed;
             pipeBottom1.Left -= pipeSpeed;
             ScoreValue.Text = score.ToString();
- // bu kısımda boruların ekrandan çıktıktan sonra sağ taraftan tekrar çıkmasını sağladım.ve ekrandan çıktıktan sonra skor değerini arttırdım.
+            // bu kısımda boruların ekrandan çıktıktan sonra sağ taraftan tekrar çıkmasını sağladım.ve ekrandan çıktıktan sonra skor değerini arttırdım.
+
             if (pipeBottom1.Left< -150)
             {
                 pipeBottom1.Left = 1000;
@@ -79,7 +82,7 @@ namespace FlappyBird
             }
             
          
- //bu bölümde eğer kuş boru veya yere değerse oyunun bitme fonksiyonunun çalışmasını sağladım.
+            //bu bölümde eğer kuş boru veya yere değerse oyunun bitme fonksiyonunun çalışmasını sağladım.
 
             if (flappyBird.Bounds.IntersectsWith(pipeTop1.Bounds)||
                 flappyBird.Bounds.IntersectsWith(pipeBottom1.Bounds)||
@@ -92,7 +95,7 @@ namespace FlappyBird
                 endGame();
 
             }
-               // bu kısımda kuş tavana çarpınca yanmasını sağladım.
+            // bu kısımda kuş tavana çarpınca yanmasını sağladım.
          
             if (flappyBird.Top<0)
             {
@@ -104,7 +107,7 @@ namespace FlappyBird
 
 
         }
-      // burada eğer space tuşuna basılırsa yükselmesini sağladım. bunu sağlamak için yer çekimini terse çevirdim.
+        // burada eğer space tuşuna basılırsa yükselmesini sağladım. bunu sağlamak için yer çekimini terse çevirdim.
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode==Keys. Space)
@@ -114,7 +117,7 @@ namespace FlappyBird
             }
 
         }
-   //burada ise tuş bırakıldığında yer çekimini eski değerine dönmesine sağladım.
+        //burada ise tuş bırakıldığında yer çekimini eski değerine dönmesine sağladım.
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space)
@@ -124,7 +127,7 @@ namespace FlappyBird
             }
 
         }
-  //bu fonksiyon oynunun bittiğini gösteren menün açılmasını ve timer ın durmasını sağlıyor.
+        //bu fonksiyon oynunun bittiğini gösteren menün açılmasını ve timer ın durmasını sağlıyor.
         private void endGame()
         {
             gameTimer.Stop();
@@ -146,8 +149,7 @@ namespace FlappyBird
         {
 
         }
-          // eğer restart tuşuna basılırsa oyunun tekrar başlamasını sağlıyor.
-
+        // eğer restart tuşuna basılırsa oyunun tekrar başlamasını sağlıyor.
         private void RestartButton_Click(object sender, EventArgs e)
         {
             Application.Restart();
